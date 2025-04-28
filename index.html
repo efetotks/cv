@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="generator" content="Hugo 0.145.0" />
+    <title>Blog Template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/" />
+
+    <script src="assets/js/color-modes.js"></script>
+
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" href="../assets/img/favicons/apple-touch-icon.png" sizes="180x180" />
+    <link rel="icon" href="../assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="../assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="manifest" href="../assets/img/favicons/manifest.json" />
+    <link rel="mask-icon" href="../assets/img/favicons/safari-pinned-tab.svg" color="#712cf9" />
+    <link rel="icon" href="../assets/img/favicons/favicon.ico" />
+    <meta name="theme-color" content="#712cf9" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow:
+          inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .bi {
+        width: 1em;
+        height: 1em;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
+      rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="blog.css" rel="stylesheet" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path
+          d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path
+          d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+        <path
+          d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path
+          d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+      </symbol>
+    </svg>
+<!--
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button
+        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="light"
+            aria-pressed="false">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="dark"
+            aria-pressed="false">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center active"
+            data-bs-theme-value="auto"
+            aria-pressed="true">
+            <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol
+        id="aperture"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <path
+          d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
+      </symbol>
+      <symbol id="cart" viewBox="0 0 16 16">
+        <path
+          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </symbol>
+      <symbol id="chevron-right" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+      </symbol>
+    </svg>
+-->
+    <div class="container">
+      <header class="border-bottom lh-1 py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+            <!--<a class="link-secondary" href="#">Subscribe</a>-->
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Curriculum Vitae</a>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <!--
+             <a class="link-secondary" href="#" aria-label="Search">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="mx-3"
+                role="img"
+                viewBox="0 0 24 24">
+                <title>Search</title>
+                <circle cx="10.5" cy="10.5" r="7.5" />
+                <path d="M21 21l-5.2-5.2" />
+              </svg>
+            </a>
+            -->
+            <!--<a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>-->
+          </div>
+        </div>
+      </header>
+
+      <div class="nav-scroller py-1 mb-3 border-bottom">
+        <nav class="nav nav-underline justify-content-between">
+          <a class="nav-item nav-link link-body-emphasis active" href="#about_me">About Me</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#education">Education</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#work_experience">Work Experience</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#extracurricular_activities">Extracurricular Activities</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#volunteer_experience">Volunteer Experience</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#skills">Skills</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#achievements_awards">Achievements &amp; Awards</a>
+        </nav>
+      </div>
+    </div>
+
+    <main class="container">
+      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+          <h1 class="display-4 fst-italic">M. Efe Totkanlı</h1>
+          <p class="lead my-3">
+            Hey! I’m Mehmet Efe, a curious learner and active high school student exploring tech, medicine, languages,
+            and beyond. Glad you’re here.
+          </p>
+          <p class="lead mb-0"><a href="#about_me" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary-emphasis">About Me</strong>
+              <h3 class="mb-0">M. Efe Totkanlı</h3>
+              <div class="mb-1 text-body-secondary">Student at GSL</div>
+              <p class="card-text mb-auto">
+                I am Mehmet Efe Totkanlı, a motivated and versatile student at Galatasaray High School in Istanbul.
+              </p>
+              <a href="#about_me" class="icon-link gap-1 icon-link-hover stretched-link">
+                Continue reading
+                <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right" /></svg>
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <svg
+                class="bd-placeholder-img"
+                width="200"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c" />
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                <image href="met.jpg" x="0" y="0" width="200" height="250" preserveAspectRatio="xMidYMid slice" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success-emphasis">Education</strong>
+              <h3 class="mb-0">Galatasaray High School</h3>
+              <div class="mb-1 text-body-secondary">2020-2025</div>
+              <p class="mb-auto">Consistently awarded the Certificate of High Achievement every semester.</p>
+              <a href="#education" class="icon-link gap-1 icon-link-hover stretched-link">
+                Continue reading
+                <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right" /></svg>
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <svg
+                class="bd-placeholder-img"
+                width="200"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c" />
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                <image href="gsl.jpg" x="0" y="0" width="200" height="250" preserveAspectRatio="xMidYMid slice" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-5">
+        <div class="col-md-8">
+          <article class="blog-post">
+            <h2 id="about_me">About Me</h2>
+            <p class="blog-post-meta">I am Mehmet Efe Totkanlı</p>
+            <hr />
+            <p>
+              A motivated and versatile student at Galatasaray High School in Istanbul. With a strong academic
+              background, consistently earning high achievement certificates, I have a passion for interdisciplinary
+              learning. I have honed my skills through various prestigious summer and winter programs, international
+              language courses, and hands-on internships in both the medical and tech fields.
+            </p>
+            <hr />
+            <p>
+              Beyond academics, I actively engage in sports, arts, and community service—playing for my school's
+              basketball team, acting in theater productions, volunteering for humanitarian causes, and participating in
+              international work camps. Fluent in English and French, and constantly advancing in Italian, I am driven
+              by a desire to explore, learn, and contribute meaningfully to the world around me..
+            </p>
+            <h2 id="education">Education</h2>
+            <hr />
+            <h3>Galatasaray High School Student</h3>
+            <p>Istanbul, Türkiye <em>(2020 – 2025)</em></p>
+            <ul>
+              <li>Consistently awarded the Certificate of High Achievement every semester.</li>
+              <li>
+                Achieved a top 0.01% ranking among 1,472,088 participants in Türkiye’s Nationwide High School Entrance
+                Exam, LGS <em>(2020)</em>.
+              </li>
+              <li>Active delegate at the Galatasaray High School Model United Nations <em>(2021)</em>.</li>
+              <li>Selected as a mentor for the SOLVEUP Innovation Conference <em>(2022)</em>.</li>
+            </ul>
+            <h3>Additional Academic Enrichment</h3>
+            <!-- <p>Istanbul, Türkiye (2020 – 2025)</p> -->
+            <ul>
+              <li>
+                <strong>Nesin Village Summer School Math Camp</strong> <em>(2023)</em>: Studied Arrays and Series,
+                Introduction to Analysis, Systems of Real Numbers, and Problem Solving.
+              </li>
+              <li>
+                <strong>Koc University High School Winter Camp</strong> <em>(2024)</em>: Completed a Medicine-focused
+                academic program.
+              </li>
+              <li>
+                <strong>Sabanci University High School Summer Program</strong> <em>(2024)</em>: Courses in Psychology,
+                International Law, International Macroeconomics, and Introduction to Industrial Engineering.
+              </li>
+              <li>
+                <strong>French in Normandy Language Course, Rouen, France</strong> <em>(2024)</em>: Completed a French
+                language course (B2-C1 level) with cultural immersion through homestay experience.
+              </li>
+              <li>
+                <strong>Python Programming Course</strong> <em>(2024–2025)</em>: Completed a 93-hour Python course at
+                Arı Bilgi Bilişim and developed a project solving Sudoku puzzles.
+              </li>
+              <li>
+                <strong>Hacettepe University Science Camp</strong> <em>(2025)</em>: Awarded a Certificate of Excellence
+                in Mathematics.
+              </li>
+            </ul>
+            <h2 id="work_experience">Work Experience</h2>
+            <hr />
+            <p>
+              From interning in hospitals to tech labs, I love rolling up my sleeves and learning where theory meets
+              real-world impact.
+            </p>
+            <ul>
+              <li>
+                Intern, <strong>Radyotom Radiology Center</strong> — <em>Istanbul (Summer 2023)</em>: Observed various
+                medical imaging techniques, gaining insight into the technical and clinical aspects of radiology.
+                Developed an understanding of imaging technologies and their applications in healthcare.
+              </li>
+              <li>
+                Intern, <strong>Tubu Blockchain Tech Company</strong> — <em>Istanbul (Summer 2024)</em>: Observed and
+                learned about blockchain software development processes. Gained foundational knowledge of blockchain
+                systems, coding practices, and the operational structure of tech startups.
+              </li>
+            </ul>
+            <h2 id="extracurricular_activities">Extracurricular Activites</h2>
+            <hr />
+            <ul>
+              <li>
+                Member, Galatasaray High School <strong>Theatre Club</strong> <em>(2021–2022)</em>: Acted in the play
+                Napoli Millionaria by Eduardo de Filippo, playing the role of Pepe, the gang leader; improved public
+                speaking and presentation skills.
+              </li>
+              <li>
+                Member, Galatasaray High School <strong>Sailing Club</strong> <em>(2021–2023)</em>: Practiced wind
+                sailing on the Marmara Sea, enhancing navigation, problem-solving, and teamwork abilities.
+              </li>
+              <li>
+                Galatasaray High School <strong>Basketball Team Member</strong> <em>(2022–2023)</em>: Competed in the
+                Beyoğlu Inter-School District Basketball Tournament, achieving second place; averaged 10 minutes of
+                playtime per match.
+              </li>
+              <li>
+                Member, Galatasaray High School <strong>Tango Club</strong> <em>(2022–2023)</em>: Participated in dance
+                training sessions, developing social and interpersonal communication skills.
+              </li>
+            </ul>
+            <h2 id="volunteer_experience">Volunteer Experience</h2>
+            <hr />
+            <ul>
+              <li>
+                <strong>Kadıköy Municipality Earthquake Relief Project, Istanbul, Türkiye</strong> <em>(2023)</em>:
+                Volunteered to organize, prepare, and deliver aid kits for earthquake survivors. Assisted in community
+                coordination efforts to support those affected by natural disasters.
+              </li>
+              <li>
+                <strong>International Work Camp, Peenemünde, Germany</strong> <em>(2024)</em>: Participated in a
+                two-week international volunteer program working to preserve historical V2-rocket bunkers. Cleared
+                vegetation and obstacles to make the ruins accessible to visitors, while developing teamwork and
+                cross-cultural communication skills.
+              </li>
+            </ul>
+          </article>
+          <article class="blog-post">
+            <h2 id="skills">Skills</h2>
+            <hr />
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Languages</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>English (C1, IELTS Academic)</td>
+                </tr>
+                <tr>
+                  <td>French (C1, DALF)</td>
+                </tr>
+                <tr>
+                  <td>Italian (Beginner)</td>
+                </tr>
+                <tr>
+                  <td>Turkish (Native Speaker)</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Technical Skills</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Python Programming (completed a 93-hour course and developed a Sudoku-solving project)</td>
+                </tr>
+                <tr>
+                  <td>Basic understanding of blockchain-based systems and software development principles</td>
+                </tr>
+                <tr>
+                  <td>Basic understanding of radiology imaging techniques</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Academic and Analytical Skills</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Strong foundation in Mathematics (Certificate of Excellence at Hacettepe University Science Camp)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Problem-solving and critical thinking (developed through math camps and interdisciplinary studies)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Communication and Leadership</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Public speaking and stage performance (Galatasaray Theatre Club)</td>
+                </tr>
+                <tr>
+                  <td>Leadership experience as elected Student Leader at Efdal Secondary School</td>
+                </tr>
+                <tr>
+                  <td>Mentorship at the SOLVEUP Innovation Conference</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Interpersonal Skills</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Teamwork (Basketball team, Sailing club, International volunteering projects)</td>
+                </tr>
+                <tr>
+                  <td>Cross-cultural communication (French homestay experience, Work camp in Germany)</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="blog-post">
+            <h2 id="achievements_awards">Achievements &amp; Awards</h2>
+            <hr />
+            <ul>
+              <li>
+                Leadership Award, Efdal Secondary School (2019) Elected Student Leader by 320 peers for demonstrated
+                leadership and communication skills.
+              </li>
+              <li>
+                Top 0.01% Rank, Türkiye Nationwide High School Entrance Exam (LGS) (2020) Ranked among the top 0.01% out
+                of 1,472,088 participants.
+              </li>
+              <li>
+                Certificate of High Achievement, Galatasaray High School (2021–2025) Awarded every semester for
+                outstanding academic performance.
+              </li>
+              <li>
+                Mentor, SOLVEUP Innovation Conference, Galatasaray High School (2022) Selected to mentor and guide peers
+                during the school's innovation conference.
+              </li>
+              <li>
+                Basketball Achievement, Beyoğlu Inter-School District Basketball Tournament (2023) Contributed to the
+                team's second-place finish.
+              </li>
+              <li>
+                Certificate of Excellence, Mathematics Sciences Camp, Hacettepe University (2025) Recognized for
+                outstanding achievement at the national science camp.
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="col-md-4">
+          <div class="position-sticky" style="top: 2rem">
+            <div class="p-4 mb-3 bg-body-tertiary rounded">
+              <h4 class="fst-italic">Hello</h4>
+              <p class="mb-0">
+                Hey there! Welcome to my little corner of the internet — I'm so glad you're here, let's connect!
+              </p>
+            </div>
+
+            <div>
+              <h4 class="fst-italic">Highlights</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <a
+                    class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                    href="#">
+                    <svg
+                      class="bd-placeholder-img"
+                      width="100%"
+                      height="96"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      preserveAspectRatio="xMidYMid slice">
+                      <rect width="100%" height="100%" fill="#777" />
+                      <image
+                        href="basketball.jpg"
+                        x="0"
+                        y="0"
+                        width="100%"
+                        height="96"
+                        preserveAspectRatio="xMidYMid slice" />
+                    </svg>
+                    <div class="col-lg-8">
+                      <h6 class="mb-0">Beyoğlu Inter-School District Basketball Tournament <em>(2023)</em></h6>
+                      <small class="text-body-secondary">Contributed to the team's second-place finish.</small>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                    href="#">
+                    <svg
+                      class="bd-placeholder-img"
+                      width="100%"
+                      height="96"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      preserveAspectRatio="xMidYMid slice">
+                      <rect width="100%" height="100%" fill="#777" />
+                      <image
+                        href="theatre.jpg"
+                        x="0"
+                        y="0"
+                        width="100%"
+                        height="96"
+                        preserveAspectRatio="xMidYMid slice" />
+                    </svg>
+                    <div class="col-lg-8">
+                      <h6 class="mb-0">GSL Theatre Club <em>(2021–2022)</em></h6>
+                      <small class="text-body-secondary"
+                        >Acted in the play Napoli Millionaria by Eduardo de Filippo, playing the role of Pepe, the gang
+                        leader.</small
+                      >
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                    href="#">
+                    <svg
+                      class="bd-placeholder-img"
+                      width="100%"
+                      height="96"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      preserveAspectRatio="xMidYMid slice">
+                      <rect width="100%" height="100%" fill="#777" />
+                      <image
+                        href="efdal.jpg"
+                        x="0"
+                        y="0"
+                        width="100%"
+                        height="96"
+                        preserveAspectRatio="xMidYMid slice" />
+                    </svg>
+                    <div class="col-lg-8">
+                      <h6 class="mb-0">Leadership Award, Efdal Secondary School <em>(2019)</em></h6>
+                      <small class="text-body-secondary">Elected Student Leader by 320 peers.</small>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-4">
+              <h4 id="hobbies_interests" class="fst-italic">Hobbies &amp; Interests</h4>
+              <hr />
+              <ol class="list-unstyled mb-0">
+                <li>
+                  <strong>Fitness Training:</strong> Dedicated to strength and muscular hypertrophy training, with a
+                  deep interest in physical development and performance.
+                </li>
+                <li>
+                  <strong>Nutrition Science:</strong> Studying nutrition, particularly protein synthesis and its role in
+                  fitness and overall health.
+                </li>
+                <li>
+                  <strong>Basketball:</strong> Actively involved in team sports, developing teamwork, strategy, and
+                  perseverance through competitive basketball.
+                </li>
+                <li>
+                  <strong>Learning Foreign Languages:</strong> Enthusiastic about mastering new languages, currently
+                  proficient in English and French, and learning Italian.
+                </li>
+                <li>
+                  <strong>Reading Classic Literature:</strong> Enjoys exploring classic works across various cultures to
+                  deepen understanding of human nature and history.
+                </li>
+                <li>
+                  <strong>Sailing and Dance:</strong> Practiced sailing on the Marmara Sea and participated in tango
+                  dancing, combining physical skill with cultural appreciation.
+                </li>
+              </ol>
+            </div>
+
+            <div class="p-4">
+              <h4 class="fst-italic">Contact</h4>
+              <hr />
+              <form action="https://formspree.io/f/mvgagjle" method="POST">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp" />
+                </div>
+                <div class="form-floating">
+                  <textarea
+                    name="message"
+                    class="form-control"
+                    style="height: 100px"
+                    placeholder="Leave your message here"
+                    id="floatingTextarea"></textarea>
+                  <label for="floatingTextarea">Your message</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- footer start -->
+    <div class="bg-dark text-light text-center">
+      <p class="align-middle p-3 mb-0">
+        <span>All rights reserved &copy; 2025</span><br />
+        <span>Designed by M. Efe Totkanlı</span>
+      </p>
+    </div>
+    <!-- footer end -->
+    <script
+      defer
+      src="../assets/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"></script>
+  </body>
+</html>
